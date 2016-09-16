@@ -67,42 +67,42 @@ module Brickset
     end
 
     def check_key
-      response = api_call(:check_key)
+      response = call_api(:check_key)
       response.body.dig(:check_key_response, :check_key_result) == 'OK'
     end
 
     def login(username, password)
-      response = api_call(:login, message: {username: username, password: password})
+      response = call_api(:login, message: {username: username, password: password})
       response.body.dig(:login_response, :login_result)
     end
 
     def instructions(id)
-      response = api_call(:get_instructions, message: {setID: id})
+      response = call_api(:get_instructions, message: {setID: id})
       Array.wrap(response.body.dig(:get_instructions_response, :get_instructions_result, :instructions))
     end
 
     def collection_totals(user_hash)
-      response = api_call(:get_collection_totals, message: {userHash: user_hash})
+      response = call_api(:get_collection_totals, message: {userHash: user_hash})
       Array.wrap(response.body.dig(:get_collection_totals_response, :get_collection_totals_result))
     end
 
     def minifig_collection(user_hash, query: '', owned: '', wanted: '')
-      response = api_call(:get_minifig_collection, message: {userHash: user_hash, query: query, owned: owned, wanted: wanted})
+      response = call_api(:get_minifig_collection, message: {userHash: user_hash, query: query, owned: owned, wanted: wanted})
       Array.wrap(response.body.dig(:get_minifig_collection_response, :get_minifig_collection_result, :minifig_collection))
     end
 
     def themes_for_user(user_hash, owned: '', wanted: '')
-      response = api_call(:get_themes_for_user, message: {userHash: user_hash, owned: owned, wanted: wanted})
+      response = call_api(:get_themes_for_user, message: {userHash: user_hash, owned: owned, wanted: wanted})
       Array.wrap(response.body.dig(:get_themes_for_user_response, :get_themes_for_user_result, :themes))
     end
 
     def subthemes_for_user(user_hash, theme, owned: '', wanted: '')
-      response = api_call(:get_subthemes_for_user, message: {userHash: user_hash, theme: theme, owned: owned, wanted: wanted})
+      response = call_api(:get_subthemes_for_user, message: {userHash: user_hash, theme: theme, owned: owned, wanted: wanted})
       Array.wrap(response.body.dig(:get_subthemes_for_user_response, :get_subthemes_for_user_result, :subthemes))
     end
 
     def years_for_user(user_hash, theme, owned: '', wanted: '')
-      response = api_call(:get_years_for_user, message: {userHash: user_hash, theme: theme, owned: owned, wanted: wanted})
+      response = call_api(:get_years_for_user, message: {userHash: user_hash, theme: theme, owned: owned, wanted: wanted})
       Array.wrap(response.body.dig(:get_years_for_user_response, :get_years_for_user_result, :years))
     end
 
