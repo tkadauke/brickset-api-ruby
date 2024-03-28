@@ -1,6 +1,6 @@
 require 'savon'
-require 'active_support/core_ext/array'
-require 'active_support/core_ext/string'
+# require 'active_support/core_ext/array'
+# require 'active_support/core_ext/string'
 
 require 'brickset/version'
 require 'brickset/configuration'
